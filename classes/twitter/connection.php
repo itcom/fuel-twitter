@@ -63,11 +63,15 @@ class Twitter_Connection {
 	 */
 	public function get($url, $params)
 	{
-		
-		$this->init_connection($url);
+		$get = "";
+		if(!empty($params['request'])){
+			$get = http_build_query($params['request'], '', '&');
+		}
+
+		$this->init_connection($url."?".$get);
 		$response = $this->add_curl($url, $params);
-	    
-	    return $response;
+
+	    return $response->getRawData();
 	}
 	
 	/**
@@ -81,7 +85,7 @@ class Twitter_Connection {
 	{
 		$post = http_build_query($params['request'], '', '&');
 		
-		$this->init_connection($url, $params);
+		$this->init_connection($url);
 		curl_setopt($this->_ch, CURLOPT_POST, 1);
 		curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $post);
 		
@@ -181,7 +185,7 @@ class Twitter_Connection {
 					
 					if ($response->__resp->code !== 200)
 					{
-						throw new \TwitterException(isset($response->__resp->data->error) ? $response->__resp->data->error : $response->__resp->data, $response->__resp->code);
+						throw new \TwitterException(isset($response->__resp->data->error) ? $response->__resp->data->error : $response->__resp->data->errors[0]->message, $response->__resp->code);
 					}
 					
 					return $response;

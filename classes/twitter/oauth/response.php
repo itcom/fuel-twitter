@@ -29,8 +29,14 @@ class Twitter_Oauth_Response {
 
 		if (strpos($this->__resp->type, 'json') !== false)
 		{
+			$this->__resp->rawdata = $this->__resp->data;
 			$this->__resp->data = json_decode($this->__resp->data);
 		}
+	}
+
+	public function getRawData()
+	{
+		return $this->__resp->rawdata;
 	}
 
 	/**

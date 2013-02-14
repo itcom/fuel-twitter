@@ -20,11 +20,11 @@ class Twitter_Oauth {
 	protected $access_token_url   = 'http://api.twitter.com/oauth/access_token';
 	protected $signature_method   = 'HMAC-SHA1';
 	protected $version            = '1.0';
-	protected $api_url            = 'http://api.twitter.com';
+	protected $api_url            = 'http://api.twitter.com/1.1';
 	protected $search_url         = 'http://search.twitter.com/';
 	protected $callback = null;
 	protected $errors = array();
-	protected $enable_debug = false;
+	protected $enable_debug = true;
 
 	/**
 	 * Loads in the Twitter config and sets everything up.
