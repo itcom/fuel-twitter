@@ -15,13 +15,13 @@ class Twitter_Oauth {
 	
 	protected $connection = null;
 	protected $tokens = array();
-	protected $auth_url           = 'http://api.twitter.com/oauth/authenticate';
-	protected $request_token_url  = 'http://api.twitter.com/oauth/request_token';
-	protected $access_token_url   = 'http://api.twitter.com/oauth/access_token';
+	protected $auth_url           = 'https://api.twitter.com/oauth/authenticate';
+	protected $request_token_url  = 'https://api.twitter.com/oauth/request_token';
+	protected $access_token_url   = 'https://api.twitter.com/oauth/access_token';
 	protected $signature_method   = 'HMAC-SHA1';
 	protected $version            = '1.0';
-	protected $api_url            = 'http://api.twitter.com/1.1';
-	protected $search_url         = 'http://search.twitter.com/';
+	protected $api_url            = 'https://api.twitter.com/1.1';
+	protected $search_url         = 'https://search.twitter.com/';
 	protected $callback = null;
 	protected $errors = array();
 	protected $enable_debug = true;
@@ -543,7 +543,7 @@ class Twitter_Oauth {
 		
 		if ($port > 0 && ( $scheme === 'http' && $port !== 80 ) || ( $scheme === 'https' && $port !== 443 ))
 		{
-			$retval .= ":{$port}";
+			//$retval .= ":{$port}";
 		}
 		
 		$retval .= $url_parts['path'];
