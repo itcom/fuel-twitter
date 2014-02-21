@@ -453,6 +453,10 @@ class Twitter_Oauth {
 		$oauth['oauth_timestamp']         = time();
 		$oauth['oauth_signature_method']  = $this->signature_method;
 		$oauth['oauth_version']           = $this->version;
+		if(isset($_GET['oauth_verifier']))
+		{
+			$oauth['oauth_verifier']     = $_GET['oauth_verifier'];
+		}
 		
 		array_walk($oauth, array($this, 'encode_rfc3986'));
 		
