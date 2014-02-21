@@ -71,7 +71,7 @@ class Twitter_Connection {
 		$this->init_connection($url."?".$get);
 		$response = $this->add_curl($url, $params);
 
-	    return $response->getRawData();
+	    return $response;
 	}
 	
 	/**
